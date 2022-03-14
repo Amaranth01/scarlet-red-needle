@@ -1,0 +1,29 @@
+Doit avoir :
+
+->Espace de connexion pour un admin
+->Doit pouvoir mettre des images
+->Doit pouvoir mettre à jour les articles
+->Doit pouvoir rajouter un autre utilisateur, mais l'utilisateur ne peut pas s'enregistrer
+
+    Articles :
+    ----------
+        -> Ajouter
+        -> Modifier
+        -> supprimer
+        -> devra contenir la date de publication
+        -> contiendra des images
+
+    Utilisateur :
+    -------------
+
+        -> Peut Ajouter un article
+        -> Peut ajouter des images
+        -> Peut modifier un article
+
+    Système d'Admin :
+    -----------------
+        -> Supprimer un article
+        -> Supprimer un utilisateur
+        -> Ajouter un utilisateur
+
+    La page principale deva contenir les dernières nouveautés.
