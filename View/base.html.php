@@ -15,6 +15,20 @@
     <h1>Scarlett tattoo</h1>
 </header>
 
+<div>
+    <nav>
+        <ul>
+            <li>Tatouages
+                <ul>
+                    <li><a href="">Réalisations</a></li>
+                    <li><a href="">À adopter</a></li>
+                </ul>
+            </li>
+            <li><a href="">Piercing</a></li>
+        </ul>
+    </nav>
+</div>
+
 <script src="/assets/js/app.js"></script>
 </body>
 </html>

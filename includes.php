@@ -19,10 +19,6 @@ require __DIR__ . '/Model/Manager/ArticleManager.php';
 require __DIR__ . '/Model/Manager/RoleManager.php';
 require __DIR__ . '/Model/Manager/UserManager.php';
 
-require __DIR__ . '/Routing/AbstractRouter.php';
-require __DIR__ . '/Routing/ArticleRouter.php';
-require __DIR__ . '/Routing/FormsRouter.php';
-require __DIR__ . '/Routing/HomeRouter.php';
-require __DIR__ . '/Routing/UserRouter.php';
+require __DIR__ . '/Router.php';
 
 session_start();

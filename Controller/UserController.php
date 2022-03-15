@@ -1,5 +1,7 @@
 <?php
 
+use App\Model\Manager\UserManager;
+
 class UserController extends AbstractController
 {
 
