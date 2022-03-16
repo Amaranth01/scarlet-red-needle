@@ -8,13 +8,89 @@ html {
     font-size: 65.5%;
 }
 
+body {
+    background: linear-gradient(darkred, red) no-repeat;
+    background-size: cover;
+    color: white;
+    margin-top: 2rem;
+}
+
 header {
     display: flex;
     align-items: center;
 }
 
 h1 {
-    margin-left: 15vw;
     font-family: 'Spline Sans', sans-serif;
     font-size: 4rem;
+    text-shadow: black 2px 5px;
+    margin-left: 18.5vw;
+}
+
+#logo {
+    border: black 3px solid;
+    margin-left: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+nav > ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin-left: 20vw;
+}
+
+li{
+    display: flex;
+    justify-content: start;
+    list-style-type: none;
+    padding: 0.2em;
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 60vw;
+    border: black 3px solid;
+    margin-top: 2rem;
+}
+
+
+.little {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    margin-top: 2.5rem;
+    background-color: darkred;
+    padding: 0.5rem;
+}
+
+nav > ul li:hover .little {
+    display: block;
+}
+
+.little > li {
+    padding: 0.5rem;
+}
+
+.title {
+    font-size: 4rem;
+    text-shadow: black 2px 5px;
+    text-align: center;
+    font-style: italic;
+    margin-top: 10rem;
+}
+
+footer {
+    margin-top: 10rem;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
 }

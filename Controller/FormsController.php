@@ -1,6 +1,8 @@
 <?php
 
-class FormsController
+namespace App\Controller;
+
+class FormsController extends AbstractController
 {
     public function index()
     {
@@ -12,4 +14,5 @@ class FormsController
             echo 'le formulaire a été envoyé';
         }
     }
+
 }

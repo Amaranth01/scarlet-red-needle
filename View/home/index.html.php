@@ -1,1 +1,1 @@
-<h1>Scarlet tattoo</h1>
+<h2 class="title">Les dernières nouvelles</h2>

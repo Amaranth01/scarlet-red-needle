@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\AbstractController;
 use App\Model\Manager\UserManager;
 
 class UserController extends AbstractController
@@ -25,4 +26,22 @@ class UserController extends AbstractController
         }
         $this->index();
     }
+
+    /**
+     * Display a specific user information.
+     * @param int $id
+     * @return void
+     */
+    public function showUser(int $id)
+    {
+        if (!UserManager::userExists($id)) {
+            $this->index();
+        } else {
+            $this->render('user/show-user', [
+                'user' => UserManager::getUser($id),
+            ]);
+        }
+    }
+
+
 }

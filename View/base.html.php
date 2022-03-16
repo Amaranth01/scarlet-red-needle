@@ -11,24 +11,38 @@
 <body>
 
 <header>
-    <img src="/asset/img/243205021_10226925465103496_6921770754731695945_n.jpg" alt="Logo de Scarlet tattoo">
-    <h1>Scarlett tattoo</h1>
+    <img src="/asset/img/243205021_10226925465103496_6921770754731695945_n.jpg" alt="Logo de Scarlet tattoo" id="logo">
+    <h1>Scarlet tattoo</h1>
 </header>
 
 <div>
     <nav>
-        <ul>
+        <ul class="list">
+            <li><a href="/index.php?c=index">Accueil</a></li>
             <li>Tatouages
-                <ul>
-                    <li><a href="">Réalisations</a></li>
-                    <li><a href="">À adopter</a></li>
+                <ul class="little">
+                    <li><a href="/index.php?c=pages&a=achievements">Réalisés</a></li>
+                    <li><a href="/index.php?c=pages&a=adopt">À adopter</a></li>
                 </ul>
             </li>
-            <li><a href="">Piercing</a></li>
+            <li><a href="/index.php?c=pages&a=piercing">Piercing</a></li>
         </ul>
     </nav>
 </div>
 
+<main class="container">
+    <?= $html ?>
+</main>
+
+<footer>
+    <p>
+        Contact : Cécile
+    </p>
+    <p>
+        Horaire :
+    </p>
+
+</footer>
 <script src="/assets/js/app.js"></script>
 </body>
 </html>

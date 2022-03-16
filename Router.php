@@ -2,10 +2,8 @@
 
 namespace App;
 
-use AbstractController;
+use App\Controller\AbstractController;
 use ErrorController;
-use ReflectionException;
-use ReflectionMethod;
 
 class Router
 {
@@ -24,25 +22,8 @@ class Router
     }
 
     /**
-     * @throws ReflectionException
-     */
-    private static function ParameterManagement(AbstractController $controller, string $action): array
-    {
-        $param= [];
-        $reflexion = new ReflectionMethod($controller, $action);
-        $parameters = $reflexion->getParameters();
-        foreach ($parameters as $item) {
-            $param[] = [
-                'param'=>$item->name,
-                'type'=>$item->getType(),
-            ];
-        }
-        return $param;
-    }
-
-    /**
      *Avoid errors in URL parameters
-     * @param AbstractController $controller
+     * @param \App\AbstractController $controller
      * @param string|null $action
      * @return string|null
      */
@@ -55,7 +36,11 @@ class Router
         }
 
         $action = lcfirst($action);
-        return method_exists($controller, $action) ? $action : null;
+        if(method_exists($controller, $action)) {
+          return $action;
+        }
+
+        return null;
     }
 
     /**
@@ -74,7 +59,6 @@ class Router
 
     /**
      * Brings together all the functions of the router
-     * @throws ReflectionException
      */
     public static function route()
     {
@@ -91,23 +75,6 @@ class Router
 
         //Verification of the presence of controller
         $action = self::guessMethod($controller, $action);
-        if ($action === null) {
-            $controller->index();
-        }
-        else {
-            $parameter = self::ParameterManagement($controller, $action);
-            if(count($parameter) === 0)  {
-                $controller->$action();
-            }
-            else {
-                $params = [];
-                foreach ($parameter as $item) {
-                    $var = $_GET[$item['param']];
-                    settype($var, $item['type']);
-                    $parameter[] = $var;
-                }
-                $controller->$action(...$params);
-            }
-        }
+        null === $action ? $controller->index() : $controller->$action();
     }
 }
