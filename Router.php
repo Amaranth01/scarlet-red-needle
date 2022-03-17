@@ -23,7 +23,7 @@ class Router
 
     /**
      *Avoid errors in URL parameters
-     * @param \App\AbstractController $controller
+     * @param AbstractController $controller
      * @param string|null $action
      * @return string|null
      */
@@ -54,7 +54,9 @@ class Router
         if (class_exists($controller)) {
             return new $controller();
         }
+        var_dump($controller);
         return new ErrorController();
+
     }
 
     /**
@@ -67,7 +69,7 @@ class Router
         $action = self::param('a');
         $controller = self::guessController($paramController);
 
-        //Returns the 404 page if the controller is not found
+        //Returns the 404 page if the controller is not found, and we quit the script
         if($controller instanceof ErrorController) {
             $controller->error404($paramController);
             exit();

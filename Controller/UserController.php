@@ -43,5 +43,4 @@ class UserController extends AbstractController
         }
     }
 
-
 }

@@ -1,5 +1,3 @@
-<h1 id="title">Mes créations</h1>
+<h2 class="title">Mes créations</h2>
 
-<main class="container">
-    <?= $html ?>
-</main>
+

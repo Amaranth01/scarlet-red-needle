@@ -14,5 +14,4 @@ class FormsController extends AbstractController
             echo 'le formulaire a été envoyé';
         }
     }
-
 }

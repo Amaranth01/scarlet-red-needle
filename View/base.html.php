@@ -21,11 +21,11 @@
             <li><a href="/index.php?c=index">Accueil</a></li>
             <li>Tatouages
                 <ul class="little">
-                    <li><a href="/index.php?c=pages&a=achievements">Réalisés</a></li>
-                    <li><a href="/index.php?c=pages&a=adopt">À adopter</a></li>
+                    <li><a href="/index.php?c=page&a=achievements">Réalisés</a></li>
+                    <li><a href="/index.php?c=page&a=adopt">À adopter</a></li>
                 </ul>
             </li>
-            <li><a href="/index.php?c=pages&a=piercing">Piercing</a></li>
+            <li><a href="/index.php?c=page&a=piercing">Piercing</a></li>
         </ul>
     </nav>
 </div>

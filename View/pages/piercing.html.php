@@ -1,1 +1,1 @@
-<h1 id="title">Les piercings</h1>
+<h2 class="title">Les piercings</h2>

@@ -12,4 +12,6 @@ class HomeController extends AbstractController
     {
         $this->render('home/index');
     }
+
+
 }
