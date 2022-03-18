@@ -4,10 +4,12 @@ namespace App\Model\Manager;
 
 use App\Model\DB;
 use App\Model\Entity\User;
+use App\Model\Entity\Role;
 
 class UserManager
 {
     public const TABLE = 'user';
+    public const TABLE_USER_ROLE = 'user_role';
 
     /**
      * Return all available users.
@@ -37,10 +39,10 @@ class UserManager
             ->setId($data['id'])
             ->setPassword($data['password'])
             ->setEmail($data['email'])
-            ->setLastname($data['username'])
+            ->setUsername($data['username'])
         ;
 
-        return $user->setRoles();
+        return $user->setRole();
     }
 
     /**
@@ -79,5 +81,43 @@ class UserManager
         return false;
     }
 
+    /**
+     * Fetch a user by mail
+     * @param string $mail
+     * @return User|null
+     */
+    public static function getUserByMail(string $mail): ?User
+    {
+        $stmt = DB::getPDO()->prepare("SELECT * FROM " . self::TABLE . " WHERE email = :email LIMIT 1");
+        $stmt->bindParam(':email', $mail);
+        return $stmt->execute() ? self::makeUser($stmt->fetch()) : null;
+    }
+
+//    /**
+//     * @param User $user
+//     * @return bool
+//     */
+//    public static function addUser(User $user): bool
+//    {
+//        $stmt = DB::getPDO()->prepare("
+//            INSERT INTO ".self::TABLE." (email, username, password)
+//            VALUES (:email, :username, :password)
+//        ");
+//
+//        $stmt->bindValue(':email', $user->getEmail());
+//        $stmt->bindValue(':username', $user->getUsername());
+//        $stmt->bindValue(':password', $user->getPassword());
+//
+//        $result = $stmt->execute();
+//        $user->setId(DB::getPDO()->lastInsertId());
+//        if($result) {
+//            $role = RoleManager::getRoleByName(RoleManager::ROLE_USER);
+//            $resultRole = DB::getPDO()->exec("
+//                INSERT INTO ".self::TABLE_USER_ROLE. " (user_fk, role_fk) VALUES (".$user->getId().", ".$role->getId().")
+//            ");
+//
+//        }
+//        return $result && $resultRole;
+//    }
 
 }

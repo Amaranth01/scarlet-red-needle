@@ -19,4 +19,11 @@ class PageController extends AbstractController
     {
         $this->render('pages/achievements');
     }
+
+    public function admin()
+    {
+        $this->render('admin/conn');
+
+    }
+
 }

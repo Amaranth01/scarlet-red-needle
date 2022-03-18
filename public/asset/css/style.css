@@ -13,6 +13,7 @@ body {
     background-size: cover;
     color: white;
     margin-top: 2rem;
+    height: auto;
 }
 
 header {
@@ -85,7 +86,45 @@ nav > ul li:hover .little {
     text-shadow: black 2px 5px;
     text-align: center;
     font-style: italic;
-    margin-top: 10rem;
+    margin-top: 6rem;
+}
+
+#form-co {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4rem;
+    font-size: 1.5rem;
+}
+
+input, label {
+    margin-top: 1rem;
+}
+
+#intro {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+tr, td {
+    margin-top: 2rem;
+    border: black double 4px;
+    font-size: 2.5rem;
+    padding: 0.5rem;
+}
+
+table {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#notice {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
 }
 
 footer {

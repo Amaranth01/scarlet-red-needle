@@ -18,7 +18,7 @@
 <div>
     <nav>
         <ul class="list">
-            <li><a href="/index.php?c=index">Accueil</a></li>
+            <li><a href="/index.php?c=home">Accueil</a></li>
             <li>Tatouages
                 <ul class="little">
                     <li><a href="/index.php?c=page&a=achievements">Réalisés</a></li>
@@ -26,6 +26,7 @@
                 </ul>
             </li>
             <li><a href="/index.php?c=page&a=piercing">Piercing</a></li>
+            <li><a href="">Art Mania Tattoo</a></li>
         </ul>
     </nav>
 </div>
