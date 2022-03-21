@@ -9,7 +9,6 @@ use App\Model\Entity\Role;
 class UserManager
 {
     public const TABLE = 'user';
-    public const TABLE_USER_ROLE = 'user_role';
 
     /**
      * Return all available users.
@@ -33,7 +32,7 @@ class UserManager
      * @param array $data
      * @return User
      */
-    public static function makeUser(array $data): User
+    private static function makeUser(array $data): User
     {
         $user = (new User())
             ->setId($data['id'])
@@ -42,17 +41,17 @@ class UserManager
             ->setUsername($data['username'])
         ;
 
-        return $user->setRole();
+        return $user->setRole((array)RoleManager::getRoleByName('user'));
     }
 
     /**
      * Check if a user exists.
-     * @param int $id
+     * @param string $mail
      * @return bool
      */
-    public static function userExists(int $id): bool
+    public static function userExists(string $mail): bool
     {
-        $result = DB::getPDO()->query("SELECT count(*) FROM " . self::TABLE . " WHERE id = $id");
+        $result = DB::getPDO()->query("SELECT count(*) FROM " . self::TABLE . " WHERE email = $mail");
         return $result ? $result->fetch(): 0;
     }
 
@@ -89,7 +88,7 @@ class UserManager
     public static function getUserByMail(string $mail): ?User
     {
         $stmt = DB::getPDO()->prepare("SELECT * FROM " . self::TABLE . " WHERE email = :email LIMIT 1");
-        $stmt->bindParam(':email', $mail);
+        $stmt->bindParam('email', $mail);
         return $stmt->execute() ? self::makeUser($stmt->fetch()) : null;
     }
 
@@ -113,7 +112,7 @@ class UserManager
 //        if($result) {
 //            $role = RoleManager::getRoleByName(RoleManager::ROLE_USER);
 //            $resultRole = DB::getPDO()->exec("
-//                INSERT INTO ".self::TABLE_USER_ROLE. " (user_fk, role_fk) VALUES (".$user->getId().", ".$role->getId().")
+//                INSERT INTO ".self::TABLE_ROLE. " (user_fk, role_fk) VALUES (".$user->getId().", ".$role->getId().")
 //            ");
 //
 //        }

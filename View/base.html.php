@@ -9,7 +9,26 @@
     <link rel="stylesheet" href="/asset/css/style.css">
 </head>
 <body>
+<?php
 
+    // Handling error messages.
+    if(isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
+        $errors = $_SESSION['errors'];
+        unset($_SESSION['errors']);
+
+        foreach($errors as $error) { ?>
+            <div class="alert alert-error"><?= $error ?></div> <?php
+        }
+    }
+
+    // Handling sucecss messages.
+    if(isset($_SESSION['success'])) {
+        $message = $_SESSION['success'];
+        unset($_SESSION['success']);
+        ?>
+        <div class="alert alert-success"><?= $message ?></div> <?php
+    }
+    ?>
 <header>
     <img src="/asset/img/243205021_10226925465103496_6921770754731695945_n.jpg" alt="Logo de Scarlet tattoo" id="logo">
     <h1>Scarlet tattoo</h1>
@@ -26,7 +45,7 @@
                 </ul>
             </li>
             <li><a href="/index.php?c=page&a=piercing">Piercing</a></li>
-            <li><a href="">Art Mania Tattoo</a></li>
+            <li><a href="/index.php?c=page&a=amt">Art Mania Tattoo</a></li>
         </ul>
     </nav>
 </div>

@@ -1,6 +1,6 @@
 <h2 class="title">Espace de connexion pour les tatoueurs</h2>
 
-<form action="/index.php?c=admin&a=space-admin" method="post" id="form-co">
+<form action="/index.php?c=user&a=connexion" method="post" id="form-co">
     <label for="username">Pseudo</label>
     <input type="text" name="username" id="username">
 

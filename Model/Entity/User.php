@@ -70,6 +70,7 @@ class User extends AbstractEntity
 
     /**
      * @param array $role
+     * @return User
      */
     public function setRole(array $role): self
     {

@@ -43,7 +43,7 @@ class UserController extends AbstractController
         }
     }
 
-    public function login()
+    public function connexion()
     {
         self::redirectIfConnected();
 
@@ -51,7 +51,13 @@ class UserController extends AbstractController
             $errorMessage = "L'utilisateur ou le mot de passe contient une erreur";
             $mail = $this->clean($this->getFormField('email'));
             $password = $this->getFormField('password');
+            $username = $this->getFormField('username');
 
+            if (empty($mail) || empty($password) || empty($username)) {
+                $_SESSION['errors'][] = $errorMessage;
+                $this->render('home/index');
+                exit();
+            }
             $user = UserManager::getUserByMail($mail);
             if (null === $user) {
                 $_SESSION['errors'][] = $errorMessage;
@@ -67,7 +73,7 @@ class UserController extends AbstractController
             }
         }
 
-        $this->render('user/login');
+        $this->render('admin/space-admin');
     }
 
 }

@@ -23,7 +23,11 @@ class PageController extends AbstractController
     public function admin()
     {
         $this->render('admin/conn');
+    }
 
+    public function amt()
+    {
+        $this->render('pages/amt');
     }
 
 }

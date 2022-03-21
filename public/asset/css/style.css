@@ -13,7 +13,7 @@ body {
     background-size: cover;
     color: white;
     margin-top: 2rem;
-    height: auto;
+    height: 100vh;
 }
 
 header {
@@ -125,6 +125,18 @@ table {
 #notice {
     margin-top: 1.5rem;
     font-size: 1.5rem;
+}
+
+#menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 3rem;
+}
+
+#under {
+    margin-top: 1rem;
 }
 
 footer {

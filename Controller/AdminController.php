@@ -12,12 +12,17 @@ class AdminController extends AbstractController
 
     public function spaceAdmin()
     {
-        if ($this->userConnected()) {
-            $this->render('admin/space-admin');
-        }
-        else {
-            $this->render('home/index');
-        }
+     $this->render('admin/space-admin');
+     }
+
+    public function addArticle()
+    {
+        $this->render('admin/add-article');
+    }
+
+    public function userList()
+    {
+        $this->render('admin/user-list');
     }
 
 }
