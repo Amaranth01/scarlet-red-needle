@@ -1,6 +1,8 @@
 <?php
 
 use App\Controller\AbstractController;
+use App\Model\Entity\User;
+use App\Model\Manager\RoleManager;
 use App\Model\Manager\UserManager;
 
 class UserController extends AbstractController
@@ -8,9 +10,79 @@ class UserController extends AbstractController
 
     public function index()
     {
-        $this->render('user/users-list', [
-            'users_list' => UserManager::getAll()
+        $this->render('admin/user-list', [
+            'user-list' => UserManager::getAll()
         ]);
+    }
+
+    /**
+     * @return void
+     */
+    public function register()
+    {
+        self::redirectIfConnected();
+
+        if($this->isFormSubmitted()) {
+            $mail = $this->clean($this->getFormField('email'));
+            $username = $this->clean($this->getFormField('username'));
+            $password = $this->clean('password');
+            $passwordRepeat = $this->getFormField('password-repeat');
+
+            $errors = [];
+            $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
+            if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+                // l'email n'est pas valide.
+                $errors[] = "L'adresse mail n'est pas au bon format";
+            }
+
+            if(!strlen($username) >= 2) {
+                // Le firstname ne fait pas au moins 2 caractères.
+                $errors[] = "Le pseudo doit faire au moins deux caractères";
+            }
+
+            if($password !== $passwordRepeat) {
+                // Les passwords ne correspondent pas !
+                $errors[] = "Les password ne correspondent pas";
+            }
+
+            if(!preg_match('/^(?=.*[!@#$%^&*-\])(?=.*[0-9])(?=.*[A-Z]).{8,20}$/', $password)) {
+                // Le password ne correspond pas au critère.
+                $errors[] = "Le password ne correpsond pas au critère";
+            }
+
+            // S'il y a une erreur, enregistrement des messages en session.
+            if(count($errors) > 0) {
+                $_SESSION['errors'] = $errors;
+            }
+            else {
+                // C'est ok, pas d'erreurs, enregistrement.
+                $user = new User();
+                $role = RoleManager::getRoleByName('user');
+                $user
+                    ->setUsername($username)
+                    ->setEmail($mail)
+                    ->setPassword(password_hash($password, PASSWORD_DEFAULT))
+                    ->setRole([$role])
+                ;
+
+                if(!UserManager::userMailExists($user->getEmail())) {
+                    UserManager::addUser($user);
+                    if(null !== $user->getId()) {
+                        $_SESSION['success'] = "Félicitations votre compte est actif";
+                        $user->setPassword('');
+                        $_SESSION['user'] = $user;
+                    }
+                    else {
+                        $_SESSION['errors'] = ["Impossible de vous enregistrer"];
+                    }
+                }
+                else {
+                    $_SESSION['errors'] = ["Cette adresse mail existe déjà !"];
+                }
+            }
+
+        }
+        $this->render('admin/space-admin');
     }
 
     /**
@@ -73,7 +145,7 @@ class UserController extends AbstractController
             }
         }
 
-        $this->render('admin/space-admin');
+        $this->render('user/space-admin');
     }
 
 }

@@ -17,7 +17,7 @@ class UserManager
     public static function getAll(): array
     {
         $users = [];
-        $result = DB::getPDO()->query("SELECT * FROM " . self::TABLE);
+        $result = DB::getPDO()->query("SELECT * FROM user" );
 
         if($result) {
             foreach ($result->fetchAll() as $data) {
@@ -40,7 +40,6 @@ class UserManager
             ->setEmail($data['email'])
             ->setUsername($data['username'])
         ;
-
         return $user->setRole((array)RoleManager::getRoleByName('user'));
     }
 
@@ -92,31 +91,41 @@ class UserManager
         return $stmt->execute() ? self::makeUser($stmt->fetch()) : null;
     }
 
-//    /**
-//     * @param User $user
-//     * @return bool
-//     */
-//    public static function addUser(User $user): bool
-//    {
-//        $stmt = DB::getPDO()->prepare("
-//            INSERT INTO ".self::TABLE." (email, username, password)
-//            VALUES (:email, :username, :password)
-//        ");
-//
-//        $stmt->bindValue(':email', $user->getEmail());
-//        $stmt->bindValue(':username', $user->getUsername());
-//        $stmt->bindValue(':password', $user->getPassword());
-//
-//        $result = $stmt->execute();
-//        $user->setId(DB::getPDO()->lastInsertId());
-//        if($result) {
-//            $role = RoleManager::getRoleByName(RoleManager::ROLE_USER);
-//            $resultRole = DB::getPDO()->exec("
-//                INSERT INTO ".self::TABLE_ROLE. " (user_fk, role_fk) VALUES (".$user->getId().", ".$role->getId().")
-//            ");
-//
-//        }
-//        return $result && $resultRole;
-//    }
+    /**
+     * Check if a user exists with its email.
+     * @param string $mail
+     * @return bool
+     */
+    public static function userMailExists(string $mail): bool
+    {
+        $result = DB::getPDO()->query("SELECT count(*) as cnt FROM user WHERE email = $mail");
+        return $result ? $result->fetch()['cnt'] : 0;
+    }
 
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public static function addUser(User $user): bool
+    {
+        $stmt = DB::getPDO()->prepare("
+            INSERT INTO user (email, username, password, role_id)
+            VALUES (:email, :username, :password, :role_id)
+        ");
+
+        $stmt->bindValue(':email', $user->getEmail());
+        $stmt->bindValue(':username', $user->getUsername());
+        $stmt->bindValue(':password', $user->getPassword());
+        $stmt->bindValue(':role_id', $user->getRole());
+
+        $result = $stmt->execute();
+        $user->setId(DB::getPDO()->lastInsertId());
+        if($result) {
+            $role = RoleManager::getRoleByName(RoleManager::ROLE_USER);
+            $resultRole = DB::getPDO()->exec("
+                INSERT INTO user (role_id) VALUES (".$user->getId().", ".$role->getId().")
+            ");
+        }
+        return $result && $resultRole;
+    }
 }

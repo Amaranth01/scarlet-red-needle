@@ -13,7 +13,6 @@ body {
     background-size: cover;
     color: white;
     margin-top: 2rem;
-    height: 100vh;
 }
 
 header {
@@ -89,7 +88,7 @@ nav > ul li:hover .little {
     margin-top: 6rem;
 }
 
-#form-co {
+#form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,10 +115,11 @@ tr, td {
 }
 
 table {
-    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
 }
 
 #notice {
@@ -142,6 +142,6 @@ table {
 footer {
     margin-top: 10rem;
     font-size: 1.5rem;
-    margin-left: 1rem;
-    margin-bottom: 0.5rem;
+    padding: 1rem;
+    background-color: darkred;
 }
