@@ -21,7 +21,7 @@ class UserController extends AbstractController
     public function register()
     {
 
-        //self::redirectIfConnected();
+        self::redirectIfConnected();
 
         if($this->isFormSubmitted()) {
             $mail = $this->clean($this->getFormField('email'));
@@ -88,7 +88,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * Delete users
+     * Route handling users deletion.
      * @param int $id
      * @return void
      */

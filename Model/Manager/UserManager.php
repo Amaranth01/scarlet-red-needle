@@ -47,9 +47,9 @@ class UserManager
     /**
      * Check if a user exists.
      * @param string $mail
-     * @return bool
+     * @return array|null
      */
-    public static function userExists(string $mail): bool
+    public static function userExists(string $mail): ?array
     {
         $result = DB::getPDO()->query("SELECT count(*) FROM user WHERE email = '$mail'");
         return $result ? $result->fetch(): 0;
@@ -72,9 +72,9 @@ class UserManager
      * @return bool
      */
     public static function deleteUser(User $user): bool {
-        if(self::userExists($user->getEmail())) {
+        if(self::userExists($user->getId())) {
             return DB::getPDO()->exec("
-            DELETE FROM user WHERE id = {$user->getEmail()}
+            DELETE FROM user WHERE id = {$user->getId()}
         ");
         }
         return false;

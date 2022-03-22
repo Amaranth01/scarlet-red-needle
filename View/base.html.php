@@ -55,12 +55,22 @@
 </main>
 
 <footer>
-    <p>
-        Contact : Cécile
+    <p id="contact">Contact : Cécile et Julien </p> <br>
+
+    <p id="open">Ouverture le Mardi, Jeudi, Vendredi et Samedi : 10H - 18H</p> <br>
+
+    <p id="tel">
+        Téléphone : 09 83 81 29 66 <br>
+        Julien : 07 60 18 36 84 <br>
+        mail : thomascecile.86@outlook.fr
     </p>
-    <p>
-        Horaire :
-    </p>
+    <br>
+    <p id="social">Réseaux sociaux :
+        <a href="https://www.facebook.com/artmaniatattoo">Art Mania Tattoo</a> |
+        <a href="https://www.facebook.com/profile.php?id=100073313887014">Scarlet Red Needle</a>
+    </p> <br>
+
+    <p id="copy">&COPY; 2022 Scarlet Red Needle et Art Mania Tattoo</p>
 
 </footer>
 <script src="/assets/js/app.js"></script>

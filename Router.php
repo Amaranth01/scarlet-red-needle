@@ -68,7 +68,7 @@ class Router
         $paramController = self::param('c', 'home');
         $action = self::param('a');
         $controller = self::guessController($paramController);
-
+        $id = self::param('id');
         //Returns the 404 page if the controller is not found, and we quit the script
         if($controller instanceof ErrorController) {
             $controller->error404($paramController);
@@ -77,6 +77,16 @@ class Router
 
         //Verification of the presence of controller
         $action = self::guessMethod($controller, $action);
-        null === $action ? $controller->index() : $controller->$action();
+        if($action !== null) {
+            if ($id !== null) {
+                $controller->$action($id);
+            }
+            else {
+                $controller->$action();
+            }
+        }
+        else {
+            $controller->index();
+        }
     }
 }

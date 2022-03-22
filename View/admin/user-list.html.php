@@ -18,8 +18,8 @@
             <td><?= $user->getId() ?></td>
         </tr>
         <tr>
-            <td><?= $user->getUsername() ?></td>
             <td>Pseudo</td>
+            <td><?= $user->getUsername() ?></td>
         </tr>
         <tr>
             <td>email</td>

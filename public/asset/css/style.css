@@ -150,3 +150,11 @@ footer {
     padding: 1rem;
     background-color: darkred;
 }
+
+#contact, #open {
+    text-align: center;
+}
+
+#copy {
+    text-align: right;
+}
