@@ -8,8 +8,6 @@ use App\Model\Entity\Role;
 
 class UserManager
 {
-    public const TABLE = 'user';
-
     /**
      * Return all available users.
      * @return array
@@ -34,13 +32,16 @@ class UserManager
      */
     private static function makeUser(array $data): User
     {
+        $roleId = $data['role_id'];
+        $role = RoleManager::getRoleById($roleId);
         $user = (new User())
             ->setId($data['id'])
             ->setPassword($data['password'])
             ->setEmail($data['email'])
             ->setUsername($data['username'])
+            ->setRole($role)
         ;
-        return $user->setRole((array)RoleManager::getRoleByName('user'));
+        return $user->setRole(RoleManager::getRoleByName('user'));
     }
 
     /**
@@ -50,7 +51,7 @@ class UserManager
      */
     public static function userExists(string $mail): bool
     {
-        $result = DB::getPDO()->query("SELECT count(*) FROM " . self::TABLE . " WHERE email = $mail");
+        $result = DB::getPDO()->query("SELECT count(*) FROM user WHERE email = '$mail'");
         return $result ? $result->fetch(): 0;
     }
 
@@ -61,7 +62,7 @@ class UserManager
      */
     public static function getUser(int $id): ?User
     {
-        $result = DB::getPDO()->query("SELECT * FROM " . self::TABLE . " WHERE id = $id");
+        $result = DB::getPDO()->query("SELECT * FROM user WHERE id = '$id'");
         return $result ? self::makeUser($result->fetch()) : null;
     }
 
@@ -71,9 +72,9 @@ class UserManager
      * @return bool
      */
     public static function deleteUser(User $user): bool {
-        if(self::userExists($user->getId())) {
+        if(self::userExists($user->getEmail())) {
             return DB::getPDO()->exec("
-            DELETE FROM " . self::TABLE . " WHERE id = {$user->getId()}
+            DELETE FROM user WHERE id = {$user->getEmail()}
         ");
         }
         return false;
@@ -86,7 +87,7 @@ class UserManager
      */
     public static function getUserByMail(string $mail): ?User
     {
-        $stmt = DB::getPDO()->prepare("SELECT * FROM " . self::TABLE . " WHERE email = :email LIMIT 1");
+        $stmt = DB::getPDO()->prepare("SELECT * FROM user WHERE email = :email LIMIT 1");
         $stmt->bindParam('email', $mail);
         return $stmt->execute() ? self::makeUser($stmt->fetch()) : null;
     }
@@ -94,12 +95,12 @@ class UserManager
     /**
      * Check if a user exists with its email.
      * @param string $mail
-     * @return bool
+     * @return array
      */
-    public static function userMailExists(string $mail): bool
+    public static function userMailExists(string $mail): ?array
     {
-        $result = DB::getPDO()->query("SELECT count(*) as cnt FROM user WHERE email = $mail");
-        return $result ? $result->fetch()['cnt'] : 0;
+        $result = DB::getPDO()->query("SELECT count(*) FROM user WHERE email = '$mail'");
+        return $result->fetch();
     }
 
     /**
@@ -113,19 +114,13 @@ class UserManager
             VALUES (:email, :username, :password, :role_id)
         ");
 
-        $stmt->bindValue(':email', $user->getEmail());
-        $stmt->bindValue(':username', $user->getUsername());
-        $stmt->bindValue(':password', $user->getPassword());
-        $stmt->bindValue(':role_id', $user->getRole());
+        $stmt->bindValue('email', $user->getEmail());
+        $stmt->bindValue('username', $user->getUsername());
+        $stmt->bindValue('password', $user->getPassword());
+        $stmt->bindValue('role_id', $user->getRole()->getId());
 
         $result = $stmt->execute();
         $user->setId(DB::getPDO()->lastInsertId());
-        if($result) {
-            $role = RoleManager::getRoleByName(RoleManager::ROLE_USER);
-            $resultRole = DB::getPDO()->exec("
-                INSERT INTO user (role_id) VALUES (".$user->getId().", ".$role->getId().")
-            ");
-        }
-        return $result && $resultRole;
+        return $result;
     }
 }

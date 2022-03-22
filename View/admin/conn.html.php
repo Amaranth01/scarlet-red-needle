@@ -10,6 +10,6 @@
     <label for="password">Mot de passe</label>
     <input type="password" name="password" id="password">
 
-    <input type="submit" value="Se connecter" name="connexion">
+    <input type="submit" value="Se connecter" name="save">
 
 </form>

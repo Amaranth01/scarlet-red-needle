@@ -20,12 +20,13 @@ class UserController extends AbstractController
      */
     public function register()
     {
-        self::redirectIfConnected();
+
+        //self::redirectIfConnected();
 
         if($this->isFormSubmitted()) {
             $mail = $this->clean($this->getFormField('email'));
             $username = $this->clean($this->getFormField('username'));
-            $password = $this->clean('password');
+            $password = $this->getFormField('password');
             $passwordRepeat = $this->getFormField('password-repeat');
 
             $errors = [];
@@ -62,11 +63,12 @@ class UserController extends AbstractController
                     ->setUsername($username)
                     ->setEmail($mail)
                     ->setPassword(password_hash($password, PASSWORD_DEFAULT))
-                    ->setRole([$role])
+                    ->setRole($role)
                 ;
 
-                if(!UserManager::userMailExists($user->getEmail())) {
+                if(0 == UserManager::userMailExists($user->getEmail())['count(*)']) {
                     UserManager::addUser($user);
+
                     if(null !== $user->getId()) {
                         $_SESSION['success'] = "Félicitations votre compte est actif";
                         $user->setPassword('');
@@ -86,7 +88,7 @@ class UserController extends AbstractController
     }
 
     /**
-     * Route handling users deletion.
+     * Delete users
      * @param int $id
      * @return void
      */

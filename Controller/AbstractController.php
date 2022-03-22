@@ -84,7 +84,7 @@ abstract class AbstractController
      */
     public function isFormSubmitted(): bool
     {
-        return isset($_POST['connexion']);
+        return isset($_POST['save']);
     }
 
     /**

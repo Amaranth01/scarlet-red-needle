@@ -28,4 +28,20 @@ class RoleManager
         }
         return $role;
     }
+
+    /**
+     * @param int $id
+     * @return Role
+     */
+    public static function getRoleById(int $id): Role
+    {
+        $roleId = new Role();
+        $request = DB::getPDO()->query("
+            SELECT * FROM user WHERE role_id = '".$id."'
+        ");
+        if($request && $roleData = $request->fetch()) {
+            $roleId->setId($roleData['id']);
+        }
+        return $roleId;
+    }
 }

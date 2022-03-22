@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Entity;
 
 use App\Model\Entity\AbstractEntity;
 use App\Model\Entity\User;
+use DateTime;
 
 class Article extends AbstractEntity
 {
     private string $title;
     private string $content;
-    private \DateTime $dateAdd;
+    private DateTime $dateAdd;
     private User $author;
 
     /**
@@ -22,6 +23,7 @@ class Article extends AbstractEntity
 
     /**
      * @param string $title
+     * @return Article
      */
     public function setTitle(string $title): self
     {
@@ -47,17 +49,18 @@ class Article extends AbstractEntity
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime
      */
-    public function getDateAdd(): \DateTime
+    public function getDateAdd(): DateTime
     {
         return $this->dateAdd;
     }
 
     /**
-     * @param \DateTime $dateAdd
+     * @param DateTime $dateAdd
+     * @return Article
      */
-    public function setDateAdd(\DateTime $dateAdd): self
+    public function setDateAdd(DateTime $dateAdd): self
     {
         $this->dateAdd = $dateAdd;
         return $this;
@@ -73,6 +76,7 @@ class Article extends AbstractEntity
 
     /**
      * @param User $author
+     * @return Article
      */
     public function setAuthor(User $author): self
     {

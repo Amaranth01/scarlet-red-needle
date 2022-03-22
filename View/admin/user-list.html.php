@@ -1,6 +1,9 @@
 <h2 class="title">Gestion des utilisateurs</h2>
 
 <h3 class="title">La liste des utilisateurs</h3>
+<div class="back-menu">
+    <a href="/index.php?c=admin&a=space-admin">Retour à l'espace d'administration</a>
+</div>
 
 <table>
     <tbody> <?php
@@ -29,7 +32,7 @@
             </td>
         </tr>
 
-        </tr> <?php
+         <?php
     } ?>
     </tbody>
 </table>
