@@ -8,8 +8,6 @@ use App\Model\Entity\User;
 
 class RoleManager
 {
-    public const ROLE_ADMIN = 'admin';
-    public const ROLE_USER = 'user';
 
     /**
      * Return a role by name.

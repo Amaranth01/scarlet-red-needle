@@ -10,8 +10,9 @@ class Article extends AbstractEntity
 {
     private string $title;
     private string $content;
-    private DateTime $dateAdd;
+    private string $image;
     private User $author;
+    private Category $category;
 
     /**
      * @return string
@@ -41,6 +42,7 @@ class Article extends AbstractEntity
 
     /**
      * @param string $content
+     * @return Article
      */
     public function setContent(string $content): self
     {
@@ -49,20 +51,20 @@ class Article extends AbstractEntity
     }
 
     /**
-     * @return DateTime
+     * @return string
      */
-    public function getDateAdd(): DateTime
+    public function getImage(): string
     {
-        return $this->dateAdd;
+        return $this->image;
     }
 
     /**
-     * @param DateTime $dateAdd
+     * @param string $image
      * @return Article
      */
-    public function setDateAdd(DateTime $dateAdd): self
+    public function setImage(string $image): self
     {
-        $this->dateAdd = $dateAdd;
+        $this->image = $image;
         return $this;
     }
 
@@ -81,6 +83,24 @@ class Article extends AbstractEntity
     public function setAuthor(User $author): self
     {
         $this->author = $author;
+        return $this;
+    }
+
+    /**
+     * @return Category
+     */
+    public function getCategory(): Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     * @return Article
+     */
+    public function setCategory(Category $category): self
+    {
+        $this->category = $category;
         return $this;
     }
 

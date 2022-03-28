@@ -82,7 +82,6 @@ class UserController extends AbstractController
                     $_SESSION['errors'] = ["Cette adresse mail existe déjà !"];
                 }
             }
-
         }
         $this->render('admin/space-admin');
     }
@@ -146,8 +145,6 @@ class UserController extends AbstractController
                 }
             }
         }
-
         $this->render('user/space-admin');
     }
-
 }

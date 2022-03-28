@@ -96,7 +96,6 @@ abstract class AbstractController
         if(!self::userConnected()) {
             return null;
         }
-
         return ($_SESSION['user']);
     }
 }

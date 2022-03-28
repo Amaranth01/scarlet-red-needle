@@ -57,12 +57,14 @@
 <footer>
     <p id="contact">Contact : Cécile et Julien </p> <br>
 
-    <p id="open">Ouverture le Mardi, Jeudi, Vendredi et Samedi : 10H - 18H</p> <br>
+    <p id="open">Ouverture le Mardi, Jeudi, Vendredi et Samedi : 10H - 18H <br>
+    Possibilité d'ouverture le lundi uniquement sur RDV avec Julien</p> <br>
 
     <p id="tel">
+        Adresse : 20 Rue du marché 35380 Plélan-Le-Grand <br>
         Téléphone : 09 83 81 29 66 <br>
         Julien : 07 60 18 36 84 <br>
-        mail : thomascecile.86@outlook.fr
+        Mail Cécile/Scarlet : thomascecile.86@outlook.fr
     </p>
     <br>
     <p id="social">Réseaux sociaux :

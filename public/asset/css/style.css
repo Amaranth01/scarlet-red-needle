@@ -121,7 +121,6 @@ table {
     flex-direction: column;
     margin-top: 2rem;
 }
-
 #notice {
     margin-top: 1.5rem;
     font-size: 1.5rem;
@@ -157,4 +156,9 @@ footer {
 
 #copy {
     text-align: right;
+}
+
+#category {
+    color: black;
+    width: 5rem;
 }
