@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td>Editer un article</td>
-            <td><a href="/index.php?c=article&a=edit-article&id=">Editer un article</a></td>
+            <td><a href="/index.php?c=article&a=edit-article&id=<?= $article->getId() ?>">Editer un article</a></td>
         </tr>
     <?php
         }

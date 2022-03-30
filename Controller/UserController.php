@@ -128,7 +128,6 @@ class UserController extends AbstractController
 
             if (empty($mail) || empty($password) || empty($username)) {
                 $_SESSION['errors'][] = $errorMessage;
-                $this->render('home/index');
                 exit();
             }
             $user = UserManager::getUserByMail($mail);
@@ -145,6 +144,6 @@ class UserController extends AbstractController
                 }
             }
         }
-        $this->render('user/space-admin');
-    }
+        $this->render('admin/space-admin');
+   }
 }

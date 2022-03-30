@@ -27,7 +27,7 @@ class Router
      * @param string|null $action
      * @return string|null
      */
-    private static function guessMethod(AbstractController $controller, ?string $action)
+    private static function guessMethod(AbstractController $controller, ?string $action): ?string
     {
         if (strpos($action, '-') !== -1) {
             $action = array_reduce(explode('-', $action), function ($ac, $a) {

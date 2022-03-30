@@ -18,7 +18,7 @@
     <input type="text" name="title" id="title">
 
     <label for="fichier">Insérer une image au format JPG, JPEG ou PNG</label>
-    <input type="file" name="userFile" id="fichier" accept=".jpg, .jpeg, .png">&nbsp;(Max 1Mo)
+    <input type="file" name="img" id="fichier" accept=".jpg, .jpeg, .png">&nbsp;(Max 1Mo)
 
     <textarea name="content" id="content" cols="30" rows="20" placeholder="Contenu facultatif"></textarea>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Controller\AbstractController;
+use App\Model\DB;
 use App\Model\Entity\Article;
 use App\Model\Entity\Category;
 use App\Model\Manager\ArticleManager;
@@ -25,9 +26,9 @@ class ArticleController extends AbstractController
         $this->render('admin/list-article');
     }
 
-    public function editArticle()
+    public function editArticle($id)
     {
-        $this->render('admin/edit-article');
+        $this->render('admin/edit-article', $data=[$id]);
     }
 
     /**
@@ -40,14 +41,17 @@ class ArticleController extends AbstractController
         $title = $this->clean($this->getFormField('title'));
         $content = $this->clean($this->getFormField('content'));
 
-        $user = self::getConnectedUser();
+        $author = self::getConnectedUser();
+        echo "<pre>";
+        var_dump($author);
+        echo "</pre>";
         $article = new Article();
         $category = CategoryManager::getCategoryByName($_POST['category']);
 
         $article->setTitle($title);
         $article->setContent($content);
-        $article->setImage(self::addImage());
-        $article->setAuthor($user);
+        $article->setImage($this->addImage());
+        $article->setAuthor($author);
         $article->setCategory($category);
 
         ArticleManager::addNewArticle($article);
@@ -55,23 +59,24 @@ class ArticleController extends AbstractController
         $this->render('admin/space-admin');
     }
 
-    public function addImage()
+    public function addImage(): string
     {
+        $name = "";
         $error = [];
-        if(isset($_FILES['fichierUtilisateur']) && $_FILES['fichierUtilisateur'] ['error'] === 0){
+        if(isset($_FILES['img']) && $_FILES['img']['error'] === 0){
 
             $allowedMimeTypes = ['image/jpg', 'image/jpeg', 'image/png'];
-            if(in_array($_FILES['fichierUtilisateur'] ['type'], $allowedMimeTypes)) {
+            if(in_array($_FILES['img']['type'], $allowedMimeTypes)) {
 
                 $maxSize = 1024 * 1024;
-                if ((int)$_FILES['fichierUtilisateur']['size']<=$maxSize) {
-                    $tmp_name = $_FILES['fichierUtilisateur'] ['tmp_name'];
-                    $name = $this->getRandomName($_FILES['fichierUtilisateur'] ['name']);
+                if ((int)$_FILES['img']['size']<=$maxSize) {
+                    $tmp_name = $_FILES['img']['tmp_name'];
+                    $name = $this->getRandomName($_FILES['img']['name']);
 
                     if(!is_dir('uploads')){
                         mkdir('uploads', '0755');
                     }
-                    move_uploaded_file($tmp_name, $name);
+                    move_uploaded_file($tmp_name,'../public/asset/uploads/img' . $name);
                 }
                 else {
                     $error[] =  "Le poids est trop lourd, maximum autorisé : 1 Mo";
@@ -84,6 +89,11 @@ class ArticleController extends AbstractController
         else {
             $error[] = "Une erreur s'est produite";
         }
+        $_SESSION['error'] = $error;
+        echo "<pre>";
+        var_dump($_FILES);
+        echo "</pre>";
+        return $name;
     }
 
     /**
@@ -121,11 +131,8 @@ class ArticleController extends AbstractController
         $newTitle = $this->clean($_POST['title']);
         $newContent = $this->clean($_POST['content']);
 
-        $article= new ArticleManager();
-        if ($_SESSION['user']->getId() !== $article->articleExist($id)->getUser()->getId()) {
-            $this->render('home/index');
-            exit();
-        }
+        $article= new ArticleManager($newTitle, $newContent, $id);
         $article->updateArticle($newTitle, $newContent, $id);
+        $this->render('home/index');
     }
 }

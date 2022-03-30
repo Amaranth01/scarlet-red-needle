@@ -34,11 +34,28 @@ class ArticleManager
     }
 
     /**
+     * Select an article by its id
+     * @param int $id
+     * @return Article
+     */
+    public static function getArticle(int $id): Article
+    {
+        $result = DB::getPDO()->query("SELECT * FROM article WHERE id = '$id'");
+        $result = $result->fetch();
+        return (new Article())
+            ->setId($id)
+            ->setContent($result ['content'])
+            ->setTitle($result['title'])
+            ->setAuthor(UserManager::getUser($result['user_id']))
+            ;
+    }
+
+    /**
      * Add a new article into the db.
      * @param Article $article
      * @return void
      */
-    public static function addNewArticle(Article &$article): bool
+    public static function addNewArticle(Article $article): bool
     {
         $stmt = DB::getPDO()->prepare("
             INSERT INTO article (title, content, image, user_id, category_id) 
@@ -68,16 +85,6 @@ class ArticleManager
 
     /**
      * @param $id
-     * @return int|mixed|null
-     */
-    public static function getArticle($id)
-    {
-        $result = DB::getPDO()->query("SELECT * FROM article WHERE id = '$id'");
-        return  $result ? self::articleExist($result) : null;
-    }
-
-    /**
-     * @param $id
      * @return false|int
      */
     public static function deleteArticle($id)
@@ -90,7 +97,7 @@ class ArticleManager
         return false;
     }
 
-    public static function updateArticle()
+    public static function updateArticle($newTitle, $newContent, $id)
     {
         $stmt = DB::getPDO()->prepare("UPDATE article 
         SET content = :newContent, title = :newTitle WHERE id = :id");
