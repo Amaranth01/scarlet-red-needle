@@ -1,4 +1,19 @@
 
 <h2 class="title">Art Mania Tattoo</h2>
 
+<?php
+foreach ($data as $article) {
 
+    ?>
+
+    <div id="content">
+            <p class="artTitle"><?= $article['article']->getTitle()?></p>
+            <div>
+                <p class="img"><img src="/asset/uploads/<?= $article['article']->getImage()?>"  alt=""></p>
+            </div>
+            <p><?=$article['article']->getContent() ?></p>
+    </div>
+
+    <?php
+}
+?>

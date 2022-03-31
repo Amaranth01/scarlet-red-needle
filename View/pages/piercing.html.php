@@ -1,14 +1,14 @@
-
-
 <h2 class="title">Les piercings</h2>
-    <div id="intro">
-        <p>
-            Vous faire des piercings ne vous transformera pas en passoire
-        </p>
-        <p>
-            En cas de baignade vous ne coulerez pas... enfin, normalement...
-        </p>
-    </div>
+
+<div id="intro">
+    <p>
+        Vous faire des piercings ne vous transformera pas en passoire
+    </p>
+    <p>
+        En cas de baignade vous ne coulerez pas... enfin, normalement...
+    </p>
+</div>
+
 
 <div>
     <table>

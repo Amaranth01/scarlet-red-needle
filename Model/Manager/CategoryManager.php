@@ -18,4 +18,20 @@ class CategoryManager
         }
         return $category;
     }
+
+    /**
+     * @param int $id
+     * @return Category
+     */
+    public static function getCategoryById(int $id): Category
+    {
+        $categoryId = new Category();
+        $request = DB::getPDO()->query("
+            SELECT * FROM article WHERE category_id = '".$id."'
+        ");
+        if($request && $categoryData = $request->fetch()) {
+            $categoryId->setId($categoryData['id']);
+        }
+        return $categoryId;
+    }
 }

@@ -10,9 +10,6 @@
 </head>
 <body>
 <?php
-echo "<pre>";
-var_dump($_SESSION['user']);
-echo "</pre>";
     // Handling error messages.
     if(isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
         $errors = $_SESSION['errors'];

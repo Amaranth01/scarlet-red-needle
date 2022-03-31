@@ -1,23 +1,36 @@
 <?php
 
 use App\Controller\AbstractController;
+use App\Model\Manager\ArticleManager;
 
 class PageController extends AbstractController
 {
 
     public function index()
     {
-        $this->render('pages/adopt');
+        $data = [];
+        $articles = ArticleManager::findAll();
+
+        var_dump($articles);
+        foreach ($articles as $article) {
+            $data[] = ['article' => $article];
+        }
+        $this->render('pages/adopt', $data);
     }
 
     public function piercing()
     {
-        $this->render('pages/piercing');
+      $this->render('pages/piercing');
     }
 
     public function achievements()
     {
-        $this->render('pages/achievements');
+        $data = [];
+        $articles = ArticleManager::findAll();
+        foreach ($articles as $article) {
+            $data[] = ['article' => $article];
+        }
+        $this->render('pages/achievements', $data);
     }
 
     public function admin()
@@ -27,7 +40,13 @@ class PageController extends AbstractController
 
     public function amt()
     {
-        $this->render('pages/amt');
-    }
+        $data = [];
+        $articles = ArticleManager::findAll();
+        var_dump($articles);
+        foreach ($articles as $article) {
 
+            $data[] = ['article' => $article];
+        }
+        $this->render('pages/amt', $data);
+    }
 }

@@ -42,9 +42,6 @@ class ArticleController extends AbstractController
         $content = $this->clean($this->getFormField('content'));
 
         $author = self::getConnectedUser();
-        echo "<pre>";
-        var_dump($author);
-        echo "</pre>";
         $article = new Article();
         $category = CategoryManager::getCategoryByName($_POST['category']);
 

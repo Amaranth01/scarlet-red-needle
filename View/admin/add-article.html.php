@@ -8,7 +8,6 @@
 
     <label for="category">Choisir la catégorie dans laquelle va l'article</label>
     <select name="category" id="category">
-        <option value="piercing">Piercings</option>
         <option value="tatoo_adopte">À adopter</option>
         <option value="tatoo_create">Réalisés</option>
         <option value="art_mania">Art Mania tattoo</option>

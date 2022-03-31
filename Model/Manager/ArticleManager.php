@@ -5,19 +5,23 @@ namespace App\Model\Manager;
 use App\Model\DB;
 use App\Model\Entity\Article;
 use App\Model\Manager\UserManager;
-use DateTime;
 
 class ArticleManager
 {
     /**
      *Returns the list of articles and create an article
+     * @param int $limit
      * @return array
      */
-    public static function findAll(): array
+    public static function findAll(int $limit = 0): array
     {
         $articles = [];
-        $query = DB::getPDO()->query("SELECT * FROM article");
-        if($query) {
+        if($limit === 0) {
+            $query = DB::getPDO()->query("SELECT * FROM article");
+        }
+        else {
+            $query = DB::getPDO()->query("SELECT * FROM article LIMIT " . $limit );
+        }
             $userManager = new UserManager();
 
             foreach($query->fetchAll() as $articleData) {
@@ -28,7 +32,6 @@ class ArticleManager
                     ->setContent($articleData['content'])
                     ->setTitle($articleData['title'])
                 ;
-            }
         }
 
         return $articles;

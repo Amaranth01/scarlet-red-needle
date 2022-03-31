@@ -1,11 +1,6 @@
 <h2 class="title">Les dernières nouvelles</h2>
 <?php
 
-use App\Model\Entity\Article;
-use App\Model\Manager\ArticleManager;
-echo "<pre> <br>";
-var_dump($data[1]);
-echo "</pre> <br>";
 foreach ($data as $article) {
     ?>
 
@@ -18,10 +13,8 @@ foreach ($data as $article) {
             <p><?=$article['article']->getContent() ?></p>
 
         </div>
-        <br> <br>
     </div>
 
     <?php
 }
-
 ?>
