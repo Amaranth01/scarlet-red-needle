@@ -1,3 +1,5 @@
+
+
 <h2 class="title">Les piercings</h2>
     <div id="intro">
         <p>

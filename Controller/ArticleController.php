@@ -76,7 +76,7 @@ class ArticleController extends AbstractController
                     if(!is_dir('uploads')){
                         mkdir('uploads', '0755');
                     }
-                    move_uploaded_file($tmp_name,'../public/asset/uploads/img' . $name);
+                    move_uploaded_file($tmp_name,'../public/asset/uploads/' . $name);
                 }
                 else {
                     $error[] =  "Le poids est trop lourd, maximum autorisé : 1 Mo";

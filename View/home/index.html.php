@@ -3,15 +3,19 @@
 
 use App\Model\Entity\Article;
 use App\Model\Manager\ArticleManager;
-
-foreach (ArticleManager::findAll() as $article) {
+echo "<pre> <br>";
+var_dump($data[1]);
+echo "</pre> <br>";
+foreach ($data as $article) {
     ?>
 
     <div id="content">
         <div class="article">
-            <p class="artTitle"><?= $article->getTitle()?></p>
+            <p class="artTitle"><?= $article['article']->getTitle()?></p>
             <br>
-            <p><?=$article->getContent() ?></p>
+            <img src="/asset/uploads/<?= $article['article']->getImage()?>" alt="coucou">
+            <br>
+            <p><?=$article['article']->getContent() ?></p>
 
         </div>
         <br> <br>
@@ -19,4 +23,5 @@ foreach (ArticleManager::findAll() as $article) {
 
     <?php
 }
+
 ?>

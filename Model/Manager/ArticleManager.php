@@ -24,6 +24,7 @@ class ArticleManager
                 $articles[] = (new Article())
                     ->setId($articleData['id'])
                     ->setAuthor($userManager->getUser($articleData['user_id']))
+                    ->setImage($articleData['image'])
                     ->setContent($articleData['content'])
                     ->setTitle($articleData['title'])
                 ;

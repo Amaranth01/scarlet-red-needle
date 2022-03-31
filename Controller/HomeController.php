@@ -1,6 +1,7 @@
 <?php
 
 use App\Controller\AbstractController;
+use App\Model\Manager\ArticleManager;
 
 class HomeController extends AbstractController
 {
@@ -10,7 +11,12 @@ class HomeController extends AbstractController
      */
     public function index()
     {
-        $this->render('home/index');
+        $data = [];
+        $articles = ArticleManager::findAll();
+        foreach ($articles as $article) {
+            $data[] = ['article' => $article];
+        }
+        $this->render('home/index', $data);
     }
 
 
