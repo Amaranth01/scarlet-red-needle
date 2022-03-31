@@ -17,10 +17,10 @@ class ArticleManager
     {
         $articles = [];
         if($limit === 0) {
-            $query = DB::getPDO()->query("SELECT * FROM article");
+            $query = DB::getPDO()->query("SELECT * FROM article ORDER BY image DESC");
         }
         else {
-            $query = DB::getPDO()->query("SELECT * FROM article LIMIT " . $limit );
+            $query = DB::getPDO()->query("SELECT * FROM article ORDER BY image, title DESC LIMIT " . $limit );
         }
             $userManager = new UserManager();
 
@@ -111,5 +111,25 @@ class ArticleManager
         $stmt->bindParam('id', $id);
 
         $stmt->execute();
+    }
+
+    /**
+     * @param int $id
+     * @return array
+     */
+    public static function articleCategory(int $id): array
+    {
+        $article = [];
+        $request =  DB::getPDO()->query("SELECT * FROM article WHERE category_id = '$id' ORDER BY image, title DESC");
+
+        foreach($request->fetchAll() as $articleData) {
+            $article[] = (new Article())
+                ->setId($articleData['id'])
+                ->setImage($articleData['image'])
+                ->setContent($articleData['content'])
+                ->setTitle($articleData['title'])
+            ;
+        }
+        return $article;
     }
 }

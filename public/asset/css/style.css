@@ -171,6 +171,16 @@ pre {
     font-size: 2.5rem;
 }
 
-#content > div{
-    width: 300px;
+#content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.img > img {
+    width: 46rem;
+    border: black 8px solid;
+    box-shadow: black 2px 3px 4px 4px;
 }

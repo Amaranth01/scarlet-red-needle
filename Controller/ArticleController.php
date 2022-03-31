@@ -87,9 +87,6 @@ class ArticleController extends AbstractController
             $error[] = "Une erreur s'est produite";
         }
         $_SESSION['error'] = $error;
-        echo "<pre>";
-        var_dump($_FILES);
-        echo "</pre>";
         return $name;
     }
 
@@ -130,6 +127,7 @@ class ArticleController extends AbstractController
 
         $article= new ArticleManager($newTitle, $newContent, $id);
         $article->updateArticle($newTitle, $newContent, $id);
-        $this->render('home/index');
+
+        $this->render('admin/space-admin');
     }
 }

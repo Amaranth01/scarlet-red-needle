@@ -8,7 +8,8 @@
 
     <label for="category">Choisir la catégorie dans laquelle va l'article</label>
     <select name="category" id="category">
-        <option value="tatoo_adopte">À adopter</option>
+        <option value="null"></option>
+        <option value="tatoo_adopt">À adopter</option>
         <option value="tatoo_create">Réalisés</option>
         <option value="art_mania">Art Mania tattoo</option>
     </select>

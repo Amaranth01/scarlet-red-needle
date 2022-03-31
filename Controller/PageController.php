@@ -8,10 +8,12 @@ class PageController extends AbstractController
 
     public function index()
     {
-        $data = [];
-        $articles = ArticleManager::findAll();
+    }
 
-        var_dump($articles);
+    public function adopt($id) {
+        $data = [];
+        $articles = ArticleManager::articleCategory($id);
+
         foreach ($articles as $article) {
             $data[] = ['article' => $article];
         }
@@ -23,10 +25,10 @@ class PageController extends AbstractController
       $this->render('pages/piercing');
     }
 
-    public function achievements()
+    public function achievements($id)
     {
         $data = [];
-        $articles = ArticleManager::findAll();
+        $articles = ArticleManager::articleCategory($id);
         foreach ($articles as $article) {
             $data[] = ['article' => $article];
         }
@@ -38,11 +40,10 @@ class PageController extends AbstractController
         $this->render('admin/conn');
     }
 
-    public function amt()
+    public function amt($id)
     {
         $data = [];
-        $articles = ArticleManager::findAll();
-        var_dump($articles);
+        $articles = ArticleManager::articleCategory($id);
         foreach ($articles as $article) {
 
             $data[] = ['article' => $article];
