@@ -11,24 +11,43 @@ class ArticleController extends AbstractController
 {
     public function index()
     {
-        $this->render('admin/article', [
-            'list-article' => ArticleManager::findAll()
-        ]);
+        if(self::redirectIfNotConnected()) {
+        }
+        else {
+            $this->render('admin/article', [
+                'list-article' => ArticleManager::findAll()
+            ]);
+        }
     }
 
     public function addPage()
     {
-        $this->render('admin/add-article');
+        if(self::redirectIfNotConnected()) {
+        }
+        else {
+            $this->render('admin/add-article');
+        }
+
     }
 
     public function listArticle()
     {
-        $this->render('admin/list-article');
+        if(self::redirectIfNotConnected()) {
+        }
+        else {
+            $this->render('admin/list-article');
+        }
+
     }
 
     public function editArticle($id)
     {
-        $this->render('admin/edit-article', $data=[$id]);
+        if(self::redirectIfNotConnected()) {
+        }
+        else {
+            $this->render('admin/edit-article', $data=[$id]);
+        }
+
     }
 
     /**
@@ -125,8 +144,10 @@ class ArticleController extends AbstractController
         $newTitle = $this->clean($_POST['title']);
         $newContent = $this->clean($_POST['content']);
 
-        $article= new ArticleManager($newTitle, $newContent, $id);
+        $article= new ArticleManager();
         $article->updateArticle($newTitle, $newContent, $id);
+        var_dump($newContent, $newTitle);
+        var_dump($id);
 
         $this->render('admin/space-admin');
     }

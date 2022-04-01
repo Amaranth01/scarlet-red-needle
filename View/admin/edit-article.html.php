@@ -5,7 +5,7 @@ use App\Model\Manager\ArticleManager;
 ?>
     <h1 class="title">Edition d'articles</h1>
 
-<form action="/index.php?c=article&a=update-article" method="post" id="form">
+<form action="/index.php?c=article&a=update-article&id=<?=ArticleManager::getArticle($data[0])->getId() ?>" method="post" id="form">
 
     <label for="title">Mise à jour du titre</label>
     <input type="text" name="title" value="<?= ArticleManager::getArticle($data[0])->getTitle() ?>" id="title">

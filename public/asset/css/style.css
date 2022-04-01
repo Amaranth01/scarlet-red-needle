@@ -182,5 +182,5 @@ pre {
 .img > img {
     width: 46rem;
     border: black 8px solid;
-    box-shadow: black 2px 3px 4px 4px;
+    box-shadow: black 1px 1px 4px 4px;
 }

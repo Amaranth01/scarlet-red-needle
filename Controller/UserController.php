@@ -10,9 +10,14 @@ class UserController extends AbstractController
 
     public function index()
     {
-        $this->render('admin/user-list', [
-            'user-list' => UserManager::getAll()
-        ]);
+        if(self::redirectIfNotConnected()) {
+        }
+        else {
+            $this->render('admin/user-list', [
+                'user-list' => UserManager::getAll()
+            ]);
+        }
+
     }
 
     /**
