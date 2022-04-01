@@ -85,7 +85,8 @@ nav > ul li:hover .little {
     text-shadow: black 2px 5px;
     text-align: center;
     font-style: italic;
-    margin-top: 6rem;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 #form {
@@ -169,6 +170,7 @@ pre {
 
 .artTitle {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 #content {
@@ -183,4 +185,23 @@ pre {
     width: 46rem;
     border: black 8px solid;
     box-shadow: black 1px 1px 4px 4px;
+}
+
+.imgContent > img {
+    width: 25rem;
+    border: black 8px solid;
+    box-shadow: black 1px 1px 1px 1px;
+    margin-left: 3rem;
+}
+
+#contentBig {
+    display: inline-block;
+}
+
+#contentBig > .article > .artTitle {
+    margin-left: 4rem;
+}
+
+.textContent {
+    font-size: 1.5rem;
 }

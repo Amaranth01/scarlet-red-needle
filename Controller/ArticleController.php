@@ -11,23 +11,15 @@ class ArticleController extends AbstractController
 {
     public function index()
     {
-        if(self::redirectIfNotConnected()) {
-        }
-        else {
-            $this->render('admin/article', [
-                'list-article' => ArticleManager::findAll()
-            ]);
-        }
+        $this->render('admin/article', [
+            'list-article' => ArticleManager::findAll()
+        ]);
     }
 
     public function addPage()
     {
-        if(self::redirectIfNotConnected()) {
-        }
-        else {
-            $this->render('admin/add-article');
-        }
 
+      $this->render('admin/add-article');
     }
 
     public function listArticle()

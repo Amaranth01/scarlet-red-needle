@@ -17,10 +17,10 @@ class ArticleManager
     {
         $articles = [];
         if($limit === 0) {
-            $query = DB::getPDO()->query("SELECT * FROM article ORDER BY image DESC");
+            $query = DB::getPDO()->query("SELECT * FROM article ORDER BY id DESC");
         }
         else {
-            $query = DB::getPDO()->query("SELECT * FROM article ORDER BY image, title DESC LIMIT " . $limit );
+            $query = DB::getPDO()->query("SELECT * FROM article ORDER BY id DESC LIMIT " . $limit );
         }
             $userManager = new UserManager();
 
@@ -120,7 +120,7 @@ class ArticleManager
     public static function articleCategory(int $id): array
     {
         $article = [];
-        $request =  DB::getPDO()->query("SELECT * FROM article WHERE category_id = '$id' ORDER BY image, title DESC");
+        $request =  DB::getPDO()->query("SELECT * FROM article WHERE category_id = '$id' ORDER BY id DESC");
 
         foreach($request->fetchAll() as $articleData) {
             $article[] = (new Article())
