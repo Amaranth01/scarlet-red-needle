@@ -1,12 +1,12 @@
-<h2 class="title">Les dernières nouvelles</h2>
+<div id="actu">
+   <h2 class="title">L'actu du shop</h2>
+        <p id="shop-actu">
+            Cécile et Julien vous accueillent le Mardi, Jeudi, Vendredi et Samedi de 10H - 18H et le lundi sur RDV avec Julien
+            à la boutique Art Mania Tatoo
+        </p>
+</div>
 
-    <div id="actu">
-        <h3>L'actu du shop</h3>
-            <p id="shop-actu">
-
-            </p>
-    </div>
-
+    <h2 class="title">Les derniers tatous et disponibilités</h2>
 <?php
 
 foreach ($data as $article) {

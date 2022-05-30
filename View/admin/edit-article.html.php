@@ -2,6 +2,11 @@
 
 use App\Model\Manager\ArticleManager;
 
+if (!UserController::adminConnected() || !UserController::userConnected()) {
+    $this->render('home/index');
+    exit();
+}
+
 ?>
     <h1 class="title">Edition d'articles</h1>
 

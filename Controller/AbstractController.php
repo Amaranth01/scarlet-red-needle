@@ -35,19 +35,6 @@ abstract class AbstractController
         return $data;
     }
 
-    public function redirectIfNotConnected(): self
-    {
-        if(!self::userConnected()) {
-            $this->render('home/index');
-        }
-        return $this;
-    }
-
-    public static function userConnected(): bool
-    {
-        return isset($_SESSION['user']) && null !== ($_SESSION['user'])->getId();
-    }
-
     /**
      * @return void
      */
@@ -82,6 +69,11 @@ abstract class AbstractController
         return isset($_POST['save']);
     }
 
+    public static function userConnected(): bool
+    {
+        return isset($_SESSION['user']) && null !== ($_SESSION['user'])->getId();
+    }
+
     /**
      * Return the connected user of null if no user connected.
      * @return User|null
@@ -92,5 +84,13 @@ abstract class AbstractController
             return null;
         }
         return ($_SESSION['user']);
+    }
+
+    /**
+     * @return bool
+     */
+    public static function adminConnected(): bool
+    {
+        return isset($_SESSION['user']) && $_SESSION['user']->getRole()->getRoleName() === 'admin';
     }
 }

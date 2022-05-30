@@ -1,3 +1,12 @@
+<?php
+
+if (!UserController::adminConnected() || !UserController::userConnected()) {
+    $this->render('home/index');
+    exit();
+}
+
+?>
+
 <h2 class="title">Espace Administrateur</h2>
 
 <div id="menu">

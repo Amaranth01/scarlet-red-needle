@@ -1,3 +1,12 @@
+<?php
+
+if (!UserController::adminConnected()) {
+    $this->render('home/index');
+    exit();
+}
+
+?>
+
 <h2 class="title">Gestion des utilisateurs</h2>
 
 <h3 class="title">La liste des utilisateurs</h3>

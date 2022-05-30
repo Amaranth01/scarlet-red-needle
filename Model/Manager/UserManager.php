@@ -80,14 +80,18 @@ class UserManager
 
     /**
      * Fetch a user by mail
-     * @param string $mail
+     * @param string $email
      * @return User|null
      */
-    public static function getUserByMail(string $mail): ?User
+    public static function getUserByMail(string $email): ?User
     {
-        $stmt = DB::getPDO()->prepare("SELECT * FROM user WHERE email = :email LIMIT 1");
-        $stmt->bindParam('email', $mail);
-        return $stmt->execute() ? self::makeUser($stmt->fetch()) : null;
+        $stmt = DB::getPDO()->prepare("SELECT * FROM user WHERE email = :email");
+        $stmt->bindValue(':email', $email);
+
+        if($stmt->execute() && $data = $stmt->fetch()) {
+            return self::makeUser($data);
+        }
+        return null;
     }
 
     /**

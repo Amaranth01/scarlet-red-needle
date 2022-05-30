@@ -12,33 +12,19 @@ class AdminController extends AbstractController
 
     public function spaceAdmin()
     {
-        if(self::redirectIfNotConnected()) {
-
-        }
-        else {
-            $this->render('admin/space-admin');
-        }
+        $this->render('admin/space-admin');
 
     }
 
     public function addArticle()
     {
-        if(self::redirectIfNotConnected()) {
-        }
-        else {
-            $this->render('admin/add-article');
-        }
+        $this->render('admin/add-article');
 
     }
 
     public function userList()
     {
-        if(self::redirectIfNotConnected()) {
-        }
-        else {
-            $this->render('admin/user-list');
-        }
-
+      $this->render('admin/user-list');
     }
 
 }

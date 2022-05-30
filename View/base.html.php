@@ -27,11 +27,13 @@
         ?>
         <div class="alert alert-success"><?= $message ?></div> <?php
     }
+
+    var_dump($_SESSION['user']);
     ?>
-<header>
+<div>
     <img src="/asset/img/243205021_10226925465103496_6921770754731695945_n.jpg" alt="Logo de Scarlet tattoo" id="logo">
     <h1>Scarlet tattoo</h1>
-</header>
+</div>
 
 <div>
     <nav>
@@ -45,6 +47,11 @@
             </li>
             <li><a href="/index.php?c=page&a=piercing&id=1">Piercing</a></li>
             <li><a href="/index.php?c=page&a=amt&id=6">Art Mania Tattoo</a></li>
+            <?php if($_SESSION['user']) {?>
+                <li><a href="/index.php?c=admin&a=space-admin">Espace des tatoueurs</a></li> 
+                <li><a href="/index.php?c=logout&a=logout">Déconnexion</a></li><?php
+            }?>
+
         </ul>
     </nav>
 </div>

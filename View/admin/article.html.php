@@ -1,3 +1,11 @@
+<?php
+
+if (!UserController::adminConnected() || !UserController::userConnected()) {
+    $this->render('home/index');
+    exit();
+}
+
+?>
 <h2 class="title">Gestion des article et nouvelles</h2>
 
 <div class="back-menu">

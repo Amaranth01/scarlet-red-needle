@@ -15,16 +15,11 @@ body {
     margin-top: 2rem;
 }
 
-header {
-    display: flex;
-    align-items: center;
-}
-
 h1 {
     font-family: 'Spline Sans', sans-serif;
     font-size: 4rem;
     text-shadow: black 2px 5px;
-    margin-left: 18.5vw;
+    text-align: center;
 }
 
 #logo {
@@ -80,7 +75,7 @@ nav > ul li:hover .little {
     padding: 0.5rem;
 }
 
-.title, h3 {
+.title {
     font-size: 4rem;
     text-shadow: black 2px 5px;
     text-align: center;
@@ -212,7 +207,7 @@ pre {
     border: white 2px solid;
     box-shadow: black 3px 3px 4px 4px;
     margin-left: 12vw;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
     color: white;
     padding: 1rem;
