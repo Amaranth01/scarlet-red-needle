@@ -18,7 +18,6 @@ class ArticleController extends AbstractController
 
     public function addPage()
     {
-
       $this->render('admin/add-article');
     }
 
@@ -37,7 +36,7 @@ class ArticleController extends AbstractController
         if(self::redirectIfNotConnected()) {
         }
         else {
-            $this->render('admin/edit-article', $data=[$id]);
+            $this->render('admin/edit-article', [$id]);
         }
 
     }
@@ -47,7 +46,6 @@ class ArticleController extends AbstractController
      */
     public function addArticle()
     {
-
         //clean data
         $title = $this->clean($this->getFormField('title'));
         $content = $this->clean($this->getFormField('content'));
@@ -138,8 +136,6 @@ class ArticleController extends AbstractController
 
         $article= new ArticleManager();
         $article->updateArticle($newTitle, $newContent, $id);
-        var_dump($newContent, $newTitle);
-        var_dump($id);
 
         $this->render('admin/space-admin');
     }

@@ -15,6 +15,6 @@ Mettre en place interface Admin :
     => Edit d'articles 
     => Suppression d'articles. 
 
-56uriana!3615
+56Uriana!3615
 ninict@hotmail.fr
 Scarlet

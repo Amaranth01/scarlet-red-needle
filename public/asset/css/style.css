@@ -80,7 +80,7 @@ nav > ul li:hover .little {
     padding: 0.5rem;
 }
 
-.title {
+.title, h3 {
     font-size: 4rem;
     text-shadow: black 2px 5px;
     text-align: center;
@@ -204,4 +204,17 @@ pre {
 
 .textContent {
     font-size: 1.5rem;
+}
+
+#shop-actu {
+    width: 80%;
+    margin-top: 1rem;
+    border: white 2px solid;
+    box-shadow: black 3px 3px 4px 4px;
+    margin-left: 12vw;
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 2rem;
 }

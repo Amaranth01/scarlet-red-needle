@@ -6,9 +6,3 @@
 
 <div class="title"><a href="/index.php?c=article&a=add-page">Ajout d'articles</a></div>
 <div class="title"><a href="/index.php?c=article&a=list-article">Modération d'article</a></div>
-
-
-
-
-
-

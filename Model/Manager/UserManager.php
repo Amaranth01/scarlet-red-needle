@@ -34,14 +34,12 @@ class UserManager
     {
         $roleId = $data['role_id'];
         $role = RoleManager::getRoleById($roleId);
-        $user = (new User())
+        return (new User())
             ->setId($data['id'])
             ->setPassword($data['password'])
             ->setEmail($data['email'])
             ->setUsername($data['username'])
-            ->setRole($role)
-        ;
-        return $user->setRole(RoleManager::getRoleByName('user'));
+            ->setRole($role);
     }
 
     /**
