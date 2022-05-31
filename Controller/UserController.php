@@ -10,14 +10,9 @@ class UserController extends AbstractController
 
     public function index()
     {
-        if(self::redirectIfNotConnected()) {
-        }
-        else {
-            $this->render('admin/user-list', [
-                'user-list' => UserManager::getAll()
-            ]);
-        }
-
+        $this->render('admin/user-list', [
+            'user-list' => UserManager::getAll()
+        ]);
     }
 
     /**
@@ -25,8 +20,6 @@ class UserController extends AbstractController
      */
     public function register()
     {
-
-        self::redirectIfConnected();
 
         if($this->isFormSubmitted()) {
             $mail = $this->clean($this->getFormField('email'));

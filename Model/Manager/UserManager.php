@@ -32,8 +32,7 @@ class UserManager
      */
     private static function makeUser(array $data): User
     {
-        $roleId = $data['role_id'];
-        $role = RoleManager::getRoleById($roleId);
+        $role = RoleManager::getRoleById($data['role_id']);
         return (new User())
             ->setId($data['id'])
             ->setPassword($data['password'])
@@ -44,13 +43,15 @@ class UserManager
 
     /**
      * Check if a user exists.
-     * @param string $mail
-     * @return array|null
+     * @param string $email
+     * @return bool
      */
-    public static function userExists(string $mail): ?array
+    public static function userExists(string $email): bool
     {
-        $result = DB::getPDO()->query("SELECT count(*) FROM user WHERE email = '$mail'");
-        return $result ? $result->fetch(): 0;
+        $stmt = DB::getPDO()->prepare("SELECT count(*) as cnt FROM user WHERE email = :email");
+        $stmt->bindValue(":email", $email);
+        $stmt->execute();
+        return (int)$stmt->fetch()['cnt'] > 0;
     }
 
     /**
@@ -60,8 +61,14 @@ class UserManager
      */
     public static function getUser(int $id): ?User
     {
-        $result = DB::getPDO()->query("SELECT * FROM user WHERE id = '$id'");
-        return $result ? self::makeUser($result->fetch()) : null;
+        $user = null;
+        $stmt = DB::getPDO()->prepare("SELECT * FROM user WHERE id = :id");
+        $stmt->bindParam(':id', $id);
+
+        if($stmt->execute() && $data = $stmt->fetch()) {
+            $user = self::makeUser($data);
+        }
+        return $user;
     }
 
     /**

@@ -54,9 +54,7 @@ class Router
         if (class_exists($controller)) {
             return new $controller();
         }
-        var_dump($controller);
         return new ErrorController();
-
     }
 
     /**

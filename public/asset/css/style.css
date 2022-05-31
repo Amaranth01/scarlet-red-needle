@@ -13,6 +13,9 @@ body {
     background-size: cover;
     color: white;
     margin-top: 2rem;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
 }
 
 h1 {
@@ -140,10 +143,12 @@ table {
 }
 
 footer {
-    margin-top: 10rem;
+    position: absolute;
+    top: 100%;
     font-size: 1.5rem;
     padding: 1rem;
     background-color: darkred;
+    width: 100%;
 }
 
 #contact, #open {

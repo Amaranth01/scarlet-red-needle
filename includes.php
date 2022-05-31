@@ -10,7 +10,6 @@ require __DIR__ . '/Controller/HomeController.php';
 require __DIR__ . '/Controller/UserController.php';
 require __DIR__ . '/Controller/PageController.php';
 require __DIR__ . '/Controller/AdminController.php';
-require __DIR__ . '/Controller/LogoutController.php';
 
 require __DIR__ . '/Model/Entity/AbstractEntity.php';
 require __DIR__ . '/Model/Entity/Article.php';

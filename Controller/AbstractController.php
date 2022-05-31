@@ -46,17 +46,16 @@ abstract class AbstractController
     }
 
     /**
-     * Return a form field value or default
+     * Get field data
      * @param string $field
-     * @param $default
-     * @return void
+     * @param null $default
+     * @return mixed|string
      */
     public function getFormField(string $field, $default = null)
     {
-        if (!isset($_POST[$field])) {
+        if(!isset($_POST[$field])) {
             return (null === $default) ? '' : $default;
         }
-
         return $_POST[$field];
     }
 
@@ -91,6 +90,6 @@ abstract class AbstractController
      */
     public static function adminConnected(): bool
     {
-        return isset($_SESSION['user']) && $_SESSION['user']->getRole()->getRoleName() === 'admin';
+        return isset($_SESSION['user']) && $_SESSION['user']->getRole()->getId(1);
     }
 }

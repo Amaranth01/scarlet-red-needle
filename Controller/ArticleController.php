@@ -23,21 +23,12 @@ class ArticleController extends AbstractController
 
     public function listArticle()
     {
-        if(self::redirectIfNotConnected()) {
-        }
-        else {
-            $this->render('admin/list-article');
-        }
-
+        $this->render('admin/list-article');
     }
 
     public function editArticle($id)
     {
-        if(self::redirectIfNotConnected()) {
-        }
-        else {
-            $this->render('admin/edit-article', [$id]);
-        }
+        $this->render('admin/edit-article', [$id]);
 
     }
 

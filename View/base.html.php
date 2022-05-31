@@ -48,8 +48,7 @@
             <li><a href="/index.php?c=page&a=piercing&id=1">Piercing</a></li>
             <li><a href="/index.php?c=page&a=amt&id=6">Art Mania Tattoo</a></li>
             <?php if($_SESSION['user']) {?>
-                <li><a href="/index.php?c=admin&a=space-admin">Espace des tatoueurs</a></li> 
-                <li><a href="/index.php?c=logout&a=logout">Déconnexion</a></li><?php
+                <li><a href="/index.php?c=admin&a=space-admin">Espace des tatoueurs</a></li><?php
             }?>
 
         </ul>
