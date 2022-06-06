@@ -2,6 +2,7 @@
 
 use App\Controller\AbstractController;
 use App\Model\Manager\ArticleManager;
+use App\Model\Manager\InfoManager;
 
 class PageController extends AbstractController
 {
@@ -49,5 +50,10 @@ class PageController extends AbstractController
             $data[] = ['article' => $article];
         }
         $this->render('pages/amt', $data);
+    }
+
+    public function info($id)
+    {
+        $this->render('admin/info');
     }
 }
