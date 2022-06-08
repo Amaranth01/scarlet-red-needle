@@ -23,7 +23,7 @@ header {
 }
 
 #firstImg {
-
+    width: 92vw;
 }
 
 h1 {
@@ -31,11 +31,6 @@ h1 {
     font-size: 4rem;
     text-shadow: black 2px 5px;
     text-align: center;
-}
-
-#logo {
-    border: black 3px solid;
-    margin-left: 2rem;
 }
 
 a {
@@ -68,8 +63,7 @@ li:hover {
     flex-direction: row;
     justify-content: space-evenly;
     width: 60vw;
-    border: black 3px solid;
-    margin-top: -6rem;
+    margin-top: -4vw;
     z-index: 2;
 }
 
@@ -96,8 +90,8 @@ nav > ul li:hover .little {
     text-shadow: black 2px 5px;
     text-align: center;
     font-style: italic;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
+    margin-top: 3vw;
+    margin-bottom: 1.5vw;
 }
 
 #form {
@@ -105,7 +99,7 @@ nav > ul li:hover .little {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 4rem;
+    margin-top: 4vw;
     font-size: 1.5rem;
 }
 
@@ -116,7 +110,7 @@ input, label {
 #intro {
     text-align: center;
     font-size: 2rem;
-    margin-top: 2rem;
+    margin-top: 2vw;
 }
 
 tr, td {
@@ -135,6 +129,7 @@ table {
 }
 #notice {
     margin-top: 1.5rem;
+    margin-left: 1rem;
     font-size: 1.5rem;
 }
 
@@ -195,7 +190,7 @@ pre {
 }
 
 .img > img {
-    width: 46rem;
+    width: 46vw;
     border: black 8px solid;
     box-shadow: black 1px 1px 4px 4px;
 }
@@ -244,4 +239,31 @@ pre {
 
 .imgArticle {
     width: 15vw;
+}
+
+@media screen and (max-width: 870px){
+    .list {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .list {
+        margin-top: -11vw;
+    }
+}
+
+@media screen and (max-width: 530px){
+    h1, .title {
+       font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .list {
+        margin-top: -15vw;
+    }
+
+    .textInfo {
+        width: 80vw;
+    }
 }

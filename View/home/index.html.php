@@ -21,7 +21,7 @@ foreach ($data as $article) {
         <div class="article">
 
             <div>
-                <p class="img"><img src="/asset/uploads/<?= $article['article']->getImage()?>" alt=""></p>
+                <p class="img"><img src="/asset/uploads/<?= $article['article']->getImage()?>" alt="image tatous" class="imgIndex"></p>
             </div>
             <p class="textContent"><?=$article['article']->getContent() ?></p>
         </div>

@@ -13,7 +13,7 @@ if (!UserController::adminConnected() || !UserController::userConnected()) {
 
 <form action="/index.php?c=info&a=edit-info&id=<?=InfoManager::getInfo(1)->getId() ?>" method="post" id="formInfo">
     <label for="content">Editer le message d'info</label>
-    <textarea name="content" id="content" cols="60" rows="20" required><?=InfoManager::getInfo(1)->getContent()?></textarea>
+    <textarea name="content" id="content" cols="60" rows="20" required class="textInfo"><?=InfoManager::getInfo(1)->getContent()?></textarea>
     <br>
     <input type="submit" name="submit" class="button" value="Modifier">
 </form>
