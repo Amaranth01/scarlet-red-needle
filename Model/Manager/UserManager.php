@@ -44,14 +44,12 @@ class UserManager
     /**
      * Check if a user exists.
      * @param string $email
-     * @return bool
+     * @return array|null
      */
-    public static function userExists(string $email): bool
+    public static function userExists(string $email): ?array
     {
-        $stmt = DB::getPDO()->prepare("SELECT count(*) as cnt FROM user WHERE email = :email");
-        $stmt->bindValue(":email", $email);
-        $stmt->execute();
-        return (int)$stmt->fetch()['cnt'] > 0;
+        $result = DB::getPDO()->query("SELECT count(*) FROM user WHERE email = '$email'");
+        return $result ? $result->fetch() : null;
     }
 
     /**
@@ -73,16 +71,16 @@ class UserManager
 
     /**
      * Delete a user from user db.
-     * @param User $user
+     * @param int $id
      * @return bool
      */
-    public static function deleteUser(User $user): bool {
-        if(self::userExists($user->getId())) {
-            return DB::getPDO()->exec("
-            DELETE FROM user WHERE id = {$user->getId()}
-        ");
-        }
-        return false;
+    public static function deleteUser(int $id): bool
+    {
+        $stmt = DB::getPDO()->prepare("DELETE FROM user WHERE id = :id");
+
+        $stmt->bindParam(':id', $id);
+
+        return $stmt->execute();
     }
 
     /**

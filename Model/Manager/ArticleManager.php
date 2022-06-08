@@ -50,6 +50,7 @@ class ArticleManager
             ->setId($id)
             ->setContent($result ['content'])
             ->setTitle($result['title'])
+            ->setImage($result['image'])
             ->setAuthor(UserManager::getUser($result['user_id']))
             ;
     }

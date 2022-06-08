@@ -91,9 +91,9 @@ class UserController extends AbstractController
      */
     public function deleteUser(int $id)
     {
-        if(UserManager::userExists($id)) {
-            $user = UserManager::getUser($id);
-            $deleted = UserManager::deleteUser($user);
+        if (self::adminConnected()) {
+            $userManager = new UserManager();
+            $deleted = $userManager->deleteUser($id);
         }
         $this->index();
     }

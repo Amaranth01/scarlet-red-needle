@@ -23,7 +23,9 @@ class ArticleController extends AbstractController
 
     public function listArticle()
     {
-        $this->render('admin/list-article');
+        $this->render('admin/list-article', [
+            'article' => ArticleManager::findAll(),
+        ]);
     }
 
     public function editArticle($id)

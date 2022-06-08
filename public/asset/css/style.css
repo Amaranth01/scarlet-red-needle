@@ -217,6 +217,7 @@ pre {
 
 .textContent {
     font-size: 1.5rem;
+    margin-top: 0.5rem;
 }
 
 #shop-actu {
@@ -239,4 +240,8 @@ pre {
     flex-direction:column ;
     margin-bottom: 1rem;
     font-size: 1.5rem;
+}
+
+.imgArticle {
+    width: 15vw;
 }
