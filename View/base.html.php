@@ -27,33 +27,36 @@
         ?>
         <div class="alert alert-success"><?= $message ?></div> <?php
     }
-
-    var_dump($_SESSION['user']);
     ?>
-<div>
-    <img src="/asset/img/243205021_10226925465103496_6921770754731695945_n.jpg" alt="Logo de Scarlet tattoo" id="logo">
-    <h1>Scarlet tattoo</h1>
-</div>
+<header>
+    <h1 id="firstTitle" >Scarlet tattoo</h1>
+<!--    <img src="/asset/img/243205021_10226925465103496_6921770754731695945_n.jpg" alt="Logo de Scarlet tattoo" id="logo">-->
+    <img src="/asset/img/st.jpg" alt="tatoo" id="firstImg">
 
-<div>
-    <nav>
-        <ul class="list">
-            <li><a href="/index.php?c=home">Accueil</a></li>
-            <li>Tatouages
-                <ul class="little">
-                    <li><a href="/index.php?c=page&a=achievements&id=2">Réalisés</a></li>
-                    <li><a href="/index.php?c=page&a=adopt&id=3">À adopter</a></li>
-                </ul>
-            </li>
-            <li><a href="/index.php?c=page&a=piercing&id=1">Piercing</a></li>
-            <li><a href="/index.php?c=page&a=amt&id=6">Art Mania Tattoo</a></li>
-            <?php if($_SESSION['user']) {?>
-                <li><a href="/index.php?c=admin&a=space-admin">Espace des tatoueurs</a></li><?php
-            }?>
+    <div>
+        <nav>
+            <ul class="list">
+                <li><a href="/index.php?c=home">Accueil</a></li>
+                <li>Tatouages
+                    <ul class="little">
+                        <li><a href="/index.php?c=page&a=achievements&id=2">Réalisés</a></li>
+                        <li><a href="/index.php?c=page&a=adopt&id=3">À adopter</a></li>
+                    </ul>
+                </li>
+                <li><a href="/index.php?c=page&a=piercing&id=1">Piercing</a></li>
+                <li><a href="/index.php?c=page&a=amt&id=6">Art Mania Tattoo</a></li>
+                <?php if($_SESSION['user']) {?>
+                    <li><a href="/index.php?c=admin&a=space-admin">Espace des tatoueurs</a></li><?php
+                }?>
 
-        </ul>
-    </nav>
-</div>
+            </ul>
+        </nav>
+    </div>
+
+</header>
+
+
+
 
 <main class="container">
     <?= $html ?>

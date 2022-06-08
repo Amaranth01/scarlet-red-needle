@@ -18,6 +18,14 @@ body {
     position: relative;
 }
 
+header {
+    text-align: center;
+}
+
+#firstImg {
+
+}
+
 h1 {
     font-family: 'Spline Sans', sans-serif;
     font-size: 4rem;
@@ -50,6 +58,10 @@ li{
     padding: 0.2em;
 }
 
+li:hover {
+    background-color: rgba(139, 0, 0, 0.49);
+}
+
 .list {
     display: flex;
     align-items: center;
@@ -57,7 +69,8 @@ li{
     justify-content: space-evenly;
     width: 60vw;
     border: black 3px solid;
-    margin-top: 2rem;
+    margin-top: -6rem;
+    z-index: 2;
 }
 
 
@@ -217,4 +230,13 @@ pre {
     color: white;
     padding: 1rem;
     margin-bottom: 2rem;
+}
+
+#formInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column ;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
