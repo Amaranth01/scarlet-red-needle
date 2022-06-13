@@ -39,12 +39,12 @@
                 <li><a href="/index.php?c=home">Accueil</a></li>
                 <li>Tatouages
                     <ul class="little">
-                        <li><a href="/index.php?c=page&a=achievements&id=2">Réalisés</a></li>
-                        <li><a href="/index.php?c=page&a=adopt&id=3">À adopter</a></li>
+                        <li><a href="/index.php?c=page&a=achievements&id=2">Réalisés pas Cécile</a></li>
+                        <li><a href="/index.php?c=page&a=amt&id=6">Réalisés par Julien</a></li>
+                        <li><a href="/index.php?c=page&a=adopt&id=3">Flash à adopter</a></li>
                     </ul>
                 </li>
                 <li><a href="/index.php?c=page&a=piercing&id=1">Piercing</a></li>
-                <li><a href="/index.php?c=page&a=amt&id=6">Art Mania Tattoo</a></li>
                 <?php if(UserController::adminConnected() || UserController::userConnected()) {?>
                     <li><a href="/index.php?c=admin&a=space-admin">Espace des tatoueurs</a></li><?php
                 }?>
